@@ -1,68 +1,95 @@
 using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using HospitalApp.Domain.Entities;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using HospitalApp.BusinessLayer;
 using HospitalApp.ServiceLayer;
 
 namespace HospitalApp.PresentationLayer.ViewModels
 {
-    public class MainWindowViewModel : INotifyPropertyChanged
+    public partial class MainWindowViewModel : ObservableObject
     {
         private readonly AdmissionService _admissionService;
-        private readonly DischargeService _dischargeService;
-
-        public ObservableCollection<Patient> Patients { get; } = new();
-
-        private Patient? _selectedPatient;
-        public Patient? SelectedPatient
+        private string _firstName;
+        public string FirstName
         {
-            get => _selectedPatient;
-            set { _selectedPatient = value; OnPropertyChanged(); }
+            get => _firstName;
+            set => SetProperty(ref _firstName, value);
         }
 
-        private string _infoMessage = "";
-        public string InfoMessage
+        private string _lastName;
+        public string LastName
         {
-            get => _infoMessage;
-            set { _infoMessage = value; OnPropertyChanged(); }
+            get => _lastName;
+            set => SetProperty(ref _lastName, value);
         }
 
-        public MainWindowViewModel(AdmissionService admissionService, DischargeService dischargeService)
+        private DateTime _dateOfBirth = DateTime.Today;
+        public DateTime DateOfBirth
         {
-            _admissionService = admissionService;
-            _dischargeService = dischargeService;
+            get => _dateOfBirth;
+            set => SetProperty(ref _dateOfBirth, value);
         }
 
-        public void AdmitSamplePatient()
+        private string _diagnosis;
+        public string Diagnosis
         {
-            var p = _admissionService.AdmitPatient("Иван", "Иванов", new DateTime(1985, 3, 5), "Боль в груди");
-            Patients.Add(p);
-            InfoMessage = $"Пациент {p.FirstName} {p.LastName} принят.";
+            get => _diagnosis;
+            set => SetProperty(ref _diagnosis, value);
         }
 
-        public void OpenEmk()
+
+        public ObservableCollection<MedicalRecord> MedicalRecords { get; } = new();
+        public bool CanOpenEmk => SelectedRecord != null;
+        partial void OnSelectedRecordChanged(MedicalRecord? value)
         {
-            if (SelectedPatient?.MedicalRecord is { } emk)
-                InfoMessage = $"Открыта ЭМК пациента. Диагноз: {emk.AdmissionDiagnosis}";
-            else
-                InfoMessage = "Выберите пациента.";
+            OnPropertyChanged(nameof(CanOpenEmk));
+        }
+        [ObservableProperty]
+        private MedicalRecord? selectedRecord;
+
+        [ObservableProperty]
+        private string? infoMessage;
+
+        public MainWindowViewModel()
+        {
+            var cardio = new Department { Name = "Кардиология" };
+            cardio.Doctors.Add(new Doctor { FullName = "Д-р Петров", Specialty = "Кардиолог" });
+
+            var surg = new Department { Name = "Хирургия" };
+            surg.Doctors.Add(new Doctor { FullName = "Д-р Сидоров", Specialty = "Хирург" });
+
+            var neuro = new Department { Name = "Неврология" };
+            neuro.Doctors.Add(new Doctor { FullName = "Д-р Смирнов", Specialty = "Невролог" });
+
+            var onDuty = new Doctor { FullName = "Д-р Иванова", Specialty = "Терапевт", IsOnDuty = true };
+
+            _admissionService = new AdmissionService(new() { cardio, surg, neuro }, onDuty);
         }
 
-        public void Discharge()
+        [RelayCommand]
+        private void AdmitPatient()
         {
-            if (SelectedPatient == null)
+            if (string.IsNullOrWhiteSpace(FirstName) ||
+                string.IsNullOrWhiteSpace(LastName) ||
+                string.IsNullOrWhiteSpace(Diagnosis))
             {
-                InfoMessage = "Выберите пациента для выписки.";
+                InfoMessage = "⚠️ Заполните все поля пациента.";
                 return;
             }
 
-            var epicrisis = _dischargeService.CreateEpicrisis(SelectedPatient.Id, DateTime.UtcNow);
-            InfoMessage = "Пациент выписан.\n" + epicrisis.FormatReport();
+            var record = _admissionService.AdmitPatient(FirstName, LastName, DateOfBirth, Diagnosis);
+            MedicalRecords.Add(record);
+
+            InfoMessage = $"✅ Пациент {record.Patient.LastName} госпитализирован в {record.Department?.Name}";
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string? name = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        [RelayCommand]
+        private void OpenEmk()
+        {
+            if (SelectedRecord != null)
+                InfoMessage = $"Открыта ЭМК пациента {SelectedRecord.Patient.LastName}. Диагноз: {SelectedRecord.AdmissionDiagnosis}";
+        }
     }
 }

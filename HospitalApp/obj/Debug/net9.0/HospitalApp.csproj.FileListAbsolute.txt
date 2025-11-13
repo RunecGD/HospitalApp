@@ -72,3 +72,4 @@
 /home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp/obj/Debug/net9.0/Hospital.58D4885F.Up2Date
 /home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp/obj/Debug/net9.0/HospitalApp.genruntimeconfig.cache
 /home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp/obj/Debug/net9.0/ref/HospitalApp.dll
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp/bin/Debug/net9.0/CommunityToolkit.Mvvm.dll

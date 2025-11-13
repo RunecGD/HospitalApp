@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using HospitalApp.Domain.Entities;
 
 namespace HospitalApp.BusinessLayer;
 
@@ -11,13 +10,23 @@ public class Doctor
     public string Specialty { get; set; } = string.Empty;
     public bool IsOnDuty { get; set; }
 
-
-// Список пациентов, закреплённых за врачом (в реальной системе хранится в БД)
-    public List<Patient> AssignedPatients { get; set; } = new();
-
-
-    public void AssignPatient(Patient p)
+    public MedicalRecord PerformInitialExamination(Patient patient, string diagnosis)
     {
-        if (!AssignedPatients.Contains(p)) AssignedPatients.Add(p);
+        var record = new MedicalRecord
+        {
+            Patient = patient,
+            AdmissionDiagnosis = diagnosis,
+            CreatedAt = DateTime.UtcNow
+        };
+        patient.MedicalRecords.Add(record);
+        return record;
+    }
+
+    public void AssignToDepartment(MedicalRecord record, Department department)
+    {
+        record.Department = department;
+        record.AttendingDoctor = this;
+        department.MedicalRecords.Add(record);
     }
 }
+

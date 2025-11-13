@@ -1,22 +1,26 @@
-using HospitalApp.Domain.Entities;
+
+using HospitalApp.BusinessLayer;
 
 namespace HospitalApp.DataAccessLayer;
 
-public interface IPatientRepository : IRepository<HospitalApp.Domain.Entities.Patient>
+public interface IPatientRepository : IRepository<Patient>
 {
-    Patient GetByInsurance(string insuranceNumber);
+    // Метод по страховке больше не нужен, убираем
+    // Patient GetByInsurance(string insuranceNumber);
 }
 
 
-public class PatientRepository : InMemoryRepository<HospitalApp.Domain.Entities.Patient>, IPatientRepository
+public class PatientRepository : InMemoryRepository<Patient>, IPatientRepository
 {
     public PatientRepository() : base(p => p.Id) { }
-    public Patient GetByInsurance(string insuranceNumber)
-    {
-        foreach (var p in storage.Values)
-        {
-            if (p.InsuranceNumber == insuranceNumber) return p;
-        }
-        return null;
-    }
+
+    // Метод по страховке удаляем полностью
+    // public Patient GetByInsurance(string insuranceNumber)
+    // {
+    //     foreach (var p in storage.Values)
+    //     {
+    //         if (p.InsuranceNumber == insuranceNumber) return p;
+    //     }
+    //     return null;
+    // }
 }

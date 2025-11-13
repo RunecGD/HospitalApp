@@ -1,21 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace HospitalApp.BusinessLayer;
 
 public class MedicalRecord
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid PatientId { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? DischargeDate { get; set; }
+
+    public Patient Patient { get; set; } = null!;
     public string AdmissionDiagnosis { get; set; } = string.Empty;
-    public List<AssignmentRecord> AssignmentHistory { get; set; } = new();
 
+    public Department? Department { get; set; }
+    public Doctor? AttendingDoctor { get; set; }
 
-// Записать выполненное назначение
-    public void AddPerformedAssignment(AssignmentRecord record)
-    {
-        record.PerformedAt = DateTime.UtcNow;
-        AssignmentHistory.Add(record);
-    }
+    public  ObservableCollection<MedicalOrder> Orders { get; set; } = new();
+    public string? DischargeSummary { get; set; }
 }

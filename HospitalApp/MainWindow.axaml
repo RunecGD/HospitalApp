@@ -1,35 +1,51 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:HospitalApp.PresentationLayer.ViewModels"
-        xmlns:domain="clr-namespace:HospitalApp.Domain.Entities"
-        x:Class="HospitalApp.UI.Views.MainWindow"
+        xmlns:businessLayer="clr-namespace:HospitalApp.BusinessLayer"
+        x:Class="HospitalApp.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Title="Больница" Width="800" Height="500">
+        Title="Больница" Width="800" Height="600">
 
-    <StackPanel Margin="12" Spacing="10">
-        <TextBlock Text="Больница — список пациентов" FontSize="20" />
+    <StackPanel Margin="10" Spacing="10">
 
-        <Button Content="Принять тестового пациента" Click="OnAdmitClick" Width="250"/>
+        <!-- Заголовок -->
+        <TextBlock Text="Регистрация пациента" FontSize="18" FontWeight="Bold"/>
 
-        <ListBox ItemsSource="{Binding Patients}"
-                 SelectedItem="{Binding SelectedPatient, Mode=TwoWay}"
-                 Height="200">
+        <!-- Поля ввода данных пациента -->
+        <StackPanel Orientation="Vertical" Spacing="5">
+            <TextBox Watermark="Имя" Text="{Binding FirstName}" />
+            <TextBox Watermark="Фамилия" Text="{Binding LastName}" />
+            <DatePicker SelectedDate="{Binding DateOfBirth}" />
+            <TextBox Watermark="Диагноз" Text="{Binding Diagnosis}" />
+        </StackPanel>
+
+        <!-- Кнопка госпитализации -->
+        <Button Content="Госпитализировать пациента"
+                Command="{Binding AdmitPatientCommand}" 
+                Margin="0,10,0,20"/>
+
+        <!-- Список медицинских записей -->
+        <TextBlock Text="Госпитализированные пациенты" FontSize="16" FontWeight="Bold"/>
+        <ListBox ItemsSource="{Binding MedicalRecords}"
+                 SelectedItem="{Binding SelectedRecord}"
+                 Height="250">
             <ListBox.ItemTemplate>
-                <DataTemplate x:DataType="domain:Patient">
-                    <StackPanel Orientation="Horizontal" Spacing="4">
-                        <TextBlock Text="{Binding FirstName}" />
-                        <TextBlock Text="{Binding LastName}" />
-                        <TextBlock Text="{Binding DateOfBirth, StringFormat=' (д.р. {0:dd.MM.yyyy})'}" />
+                <DataTemplate x:DataType="businessLayer:MedicalRecord">
+                    <StackPanel>
+                        <TextBlock Text="{Binding Patient.LastName}" FontWeight="Bold" />
+                        <TextBlock Text="{Binding Department.Name, StringFormat='Отделение: {0}'}" />
+                        <TextBlock Text="{Binding AttendingDoctor.FullName, StringFormat='Врач: {0}'}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel Orientation="Horizontal" Spacing="8">
-            <Button Content="Открыть ЭМК" Click="OnOpenEmkClick" IsEnabled="{Binding SelectedPatient}" />
-            <Button Content="Выписать" Click="OnDischargeClick" IsEnabled="{Binding SelectedPatient}" />
-        </StackPanel>
+        <!-- Кнопка открытия ЭМК -->
+        <Button Content="Открыть ЭМК"
+                Command="{Binding OpenEmkCommand}"
+                IsEnabled="{Binding CanOpenEmk}" />
 
-        <TextBlock Text="{Binding InfoMessage}" FontStyle="Italic" />
+        <!-- Сообщения -->
+        <TextBlock Text="{Binding InfoMessage}" FontWeight="Bold" Foreground="DarkBlue"/>
     </StackPanel>
 </Window>

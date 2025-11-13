@@ -5,29 +5,12 @@ using HospitalApp.DataAccessLayer;
 
 namespace HospitalApp.ServiceLayer;
 
+// Вместо DischargeEpicrisis
 public class DischargeService
 {
-    private readonly IPatientRepository _patientRepo;
-    public DischargeService(IPatientRepository patientRepo) { _patientRepo = patientRepo; }
-
-
-    public DischargeEpicrisis CreateEpicrisis(Guid patientId, DateTime dischargeDate)
+    public void DischargePatient(MedicalRecord record, string summary)
     {
-        var p = _patientRepo.Get(patientId);
-        if (p == null) throw new ArgumentException("Пациент не найден");
-        var emk = p.MedicalRecord;
-
-
-        var epicrisis = new DischargeEpicrisis
-        {
-            PatientId = p.Id,
-            AdmissionDate = emk.CreatedAt,
-            DischargeDate = dischargeDate,
-            InitialDiagnosis = emk.AdmissionDiagnosis,
-            PerformedAssignmentsSummaries = emk.AssignmentHistory.Select(a => a.Description).ToList()
-        };
-
-
-        return epicrisis;
+        record.DischargeSummary = summary;
+        record.DischargeDate = DateTime.UtcNow;
     }
 }
