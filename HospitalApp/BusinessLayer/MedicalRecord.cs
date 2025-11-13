@@ -7,8 +7,8 @@ namespace HospitalApp.BusinessLayer;
 public class MedicalRecord
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    public DateTime? DischargeDate { get; set; }
+    public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
+    public DateTimeOffset? DischargeDate { get; set; }
 
     public Patient Patient { get; set; } = null!;
     public string AdmissionDiagnosis { get; set; } = string.Empty;

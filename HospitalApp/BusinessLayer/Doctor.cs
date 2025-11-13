@@ -16,7 +16,6 @@ public class Doctor
         {
             Patient = patient,
             AdmissionDiagnosis = diagnosis,
-            CreatedAt = DateTime.UtcNow
         };
         patient.MedicalRecords.Add(record);
         return record;

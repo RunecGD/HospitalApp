@@ -11,6 +11,6 @@ public class DischargeService
     public void DischargePatient(MedicalRecord record, string summary)
     {
         record.DischargeSummary = summary;
-        record.DischargeDate = DateTime.UtcNow;
+        record.DischargeDate = DateTimeOffset.UtcNow;
     }
 }

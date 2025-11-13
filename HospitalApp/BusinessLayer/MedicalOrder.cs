@@ -22,7 +22,7 @@ public class MedicalOrder
     public Guid Id { get; set; } = Guid.NewGuid();
     public OrderType Type { get; set; }
     public string Description { get; set; } = string.Empty;
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
     public OrderStatus Status { get; set; } = OrderStatus.Planned;
 
     public Doctor? AssignedBy { get; set; }

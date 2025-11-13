@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HospitalApp.BusinessLayer;
@@ -11,6 +12,7 @@ namespace HospitalApp.PresentationLayer.ViewModels
     {
         private readonly AdmissionService _admissionService;
         private string _firstName;
+
         public string FirstName
         {
             get => _firstName;
@@ -18,20 +20,23 @@ namespace HospitalApp.PresentationLayer.ViewModels
         }
 
         private string _lastName;
+
         public string LastName
         {
             get => _lastName;
             set => SetProperty(ref _lastName, value);
         }
 
-        private DateTime _dateOfBirth = DateTime.Today;
-        public DateTime DateOfBirth
+        private DateTimeOffset _dateOfBirth = DateTimeOffset.Now;
+
+        public DateTimeOffset DateOfBirth
         {
             get => _dateOfBirth;
             set => SetProperty(ref _dateOfBirth, value);
         }
 
         private string _diagnosis;
+
         public string Diagnosis
         {
             get => _diagnosis;
@@ -41,15 +46,15 @@ namespace HospitalApp.PresentationLayer.ViewModels
 
         public ObservableCollection<MedicalRecord> MedicalRecords { get; } = new();
         public bool CanOpenEmk => SelectedRecord != null;
+
         partial void OnSelectedRecordChanged(MedicalRecord? value)
         {
             OnPropertyChanged(nameof(CanOpenEmk));
         }
-        [ObservableProperty]
-        private MedicalRecord? selectedRecord;
 
-        [ObservableProperty]
-        private string? infoMessage;
+        [ObservableProperty] private MedicalRecord? selectedRecord;
+
+        [ObservableProperty] private string? infoMessage;
 
         public MainWindowViewModel()
         {
@@ -83,13 +88,6 @@ namespace HospitalApp.PresentationLayer.ViewModels
 
             InfoMessage = $"✅ Пациент {record.Patient.LastName} госпитализирован в {record.Department?.Name}";
         }
-
-
-        [RelayCommand]
-        private void OpenEmk()
-        {
-            if (SelectedRecord != null)
-                InfoMessage = $"Открыта ЭМК пациента {SelectedRecord.Patient.LastName}. Диагноз: {SelectedRecord.AdmissionDiagnosis}";
-        }
+        
     }
 }

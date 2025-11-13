@@ -15,7 +15,7 @@ public class AdmissionService
         _onDutyDoctor = onDutyDoctor;
     }
 
-    public MedicalRecord AdmitPatient(string firstName, string lastName, DateTime dob, string diagnosis)
+    public MedicalRecord AdmitPatient(string firstName, string lastName, DateTimeOffset dob, string diagnosis)
     {
         var patient = new Patient
         {
