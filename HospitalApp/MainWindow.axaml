@@ -8,76 +8,131 @@
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="500"/> <!-- Левая колонка: регистрация + список -->
-            <ColumnDefinition Width="*"/>   <!-- Правая колонка: ЭМК -->
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Левая колонка -->
         <StackPanel Grid.Column="0" Spacing="10">
-            <!-- Заголовок -->
-            <TextBlock Text="Регистрация пациента" FontSize="18" FontWeight="Bold"/>
 
-            <!-- Поля ввода данных пациента -->
-            <StackPanel Orientation="Vertical" Spacing="5">
+            <TextBlock Text="Регистрация пациента"
+                       FontSize="18" FontWeight="Bold"/>
+
+            <StackPanel Spacing="5">
                 <TextBox Watermark="Имя" Text="{Binding FirstName}" />
                 <TextBox Watermark="Фамилия" Text="{Binding LastName}" />
                 <DatePicker SelectedDate="{Binding DateOfBirth}" />
                 <TextBox Watermark="Диагноз" Text="{Binding Diagnosis}" />
             </StackPanel>
 
-            <!-- Кнопка госпитализации -->
             <Button Content="Госпитализировать пациента"
-                    Command="{Binding AdmitPatientCommand}" 
+                    Command="{Binding AdmitPatientCommand}"
                     Margin="0,10,0,20"/>
 
-            <!-- Список медицинских записей -->
-            <TextBlock Text="Госпитализированные пациенты" FontSize="16" FontWeight="Bold"/>
+            <TextBlock Text="Госпитализированные пациенты"
+                       FontSize="16" FontWeight="Bold"/>
+
             <ListBox ItemsSource="{Binding MedicalRecords}"
                      SelectedItem="{Binding SelectedRecord}"
                      Height="400">
+
                 <ListBox.ItemTemplate>
                     <DataTemplate x:DataType="businessLayer:MedicalRecord">
                         <StackPanel>
-                            <TextBlock Text="{Binding Patient.LastName}" FontWeight="Bold" />
-                            <TextBlock Text="{Binding Department.Name, StringFormat='Отделение: {0}'}" />
-                            <TextBlock Text="{Binding AttendingDoctor.FullName, StringFormat='Врач: {0}'}" />
+                            <TextBlock Text="{Binding Patient.LastName}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Department.Name, StringFormat='Отделение: {0}'}"/>
+                            <TextBlock Text="{Binding AttendingDoctor.FullName, StringFormat='Врач: {0}'}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+
             </ListBox>
 
-            <!-- Сообщения -->
-            <TextBlock Text="{Binding InfoMessage}" FontWeight="Bold" Foreground="White"/>
+            <TextBlock Text="{Binding InfoMessage}"
+                       Foreground="White"
+                       FontWeight="Bold"/>
+
         </StackPanel>
 
-        <!-- Правая колонка: блок ЭМК -->
-        <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" Padding="10" Height="300" VerticalAlignment="Top">
-            <ScrollViewer>
-                <StackPanel Spacing="10">
-                    <TextBlock Text="Электронная медицинская карта" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
+        <StackPanel Grid.Column="1" Spacing="15">
 
-                    <TextBlock Text="{Binding SelectedRecord.Patient.LastName, StringFormat='Фамилия: {0}'}"/>
-                    <TextBlock Text="{Binding SelectedRecord.Patient.FirstName, StringFormat='Имя: {0}'}"/>
-                    <TextBlock Text="{Binding SelectedRecord.Patient.DateOfBirth, StringFormat='Дата рождения: {0:dd.MM.yyyy}'}"/>
-                    <TextBlock Text="{Binding SelectedRecord.AdmissionDiagnosis, StringFormat='Диагноз: {0}'}"/>
-                    <TextBlock Text="{Binding SelectedRecord.Department.Name, StringFormat='Отделение: {0}'}"/>
-                    <TextBlock Text="{Binding SelectedRecord.AttendingDoctor.FullName, StringFormat='Врач: {0}'}"/>
+            <Border BorderBrush="Gray" BorderThickness="1" Padding="10" Height="300">
+                <ScrollViewer>
+                    <StackPanel Spacing="6">
 
-                    <TextBlock Text="Назначения:" FontWeight="Bold" Margin="0,10,0,0"/>
-                    <ItemsControl ItemsSource="{Binding SelectedRecord.Orders}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate x:DataType="businessLayer:MedicalOrder">
-                                <StackPanel Margin="0,2,0,2">
-                                    <TextBlock Text="{Binding Description}" FontWeight="Bold"/>
-                                    <TextBlock Text="{Binding Type, StringFormat='Тип: {0}'}"/>
-                                    <TextBlock Text="{Binding Status, StringFormat='Статус: {0}'}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                        <TextBlock Text="Электронная медицинская карта"
+                                   FontSize="16" FontWeight="Bold"
+                                   HorizontalAlignment="Center"/>
+
+                        <TextBlock Text="{Binding SelectedRecord.Patient.LastName, StringFormat='Фамилия: {0}'}"/>
+                        <TextBlock Text="{Binding SelectedRecord.Patient.FirstName, StringFormat='Имя: {0}'}"/>
+                        <TextBlock Text="{Binding SelectedRecord.Patient.DateOfBirth, StringFormat='Дата рождения: {0:dd.MM.yyyy}'}"/>
+                        <TextBlock Text="{Binding SelectedRecord.CreatedAt, StringFormat='Дата госпитализации: {0:dd.MM.yyyy}'}"/>
+                        <TextBlock Text="{Binding SelectedRecord.AdmissionDiagnosis, StringFormat='Диагноз: {0}'}"/>
+                        <TextBlock Text="{Binding SelectedRecord.Department.Name, StringFormat='Отделение: {0}'}"/>
+                        <TextBlock Text="{Binding SelectedRecord.AttendingDoctor.FullName, StringFormat='Врач: {0}'}"/>
+
+                        <TextBlock Text="Назначения:" FontWeight="Bold"
+                                   Margin="0,10,0,0"/>
+
+                        <ItemsControl ItemsSource="{Binding SelectedRecord.Orders}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="businessLayer:MedicalOrder">
+                                    <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" Padding="4">
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Description}" FontWeight="Bold"/>
+                                            <TextBlock Text="{Binding Type, StringFormat='Тип: {0}'}"/>
+                                            <TextBlock Text="{Binding Status, StringFormat='Статус: {0}'}"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+
+            <Border BorderBrush="Gray" BorderThickness="1" Padding="10" Margin="0,10,0,0">
+                <StackPanel DataContext="{Binding OrderVm}" Spacing="8">
+
+                    <TextBlock Text="Добавить назначение" FontWeight="Bold" />
+
+                    <!-- Тип -->
+                    <ComboBox ItemsSource="{Binding OrderTypes}"
+                              SelectedItem="{Binding SelectedType}" />
+
+                    <!-- Подтипы -->
+                    <ComboBox ItemsSource="{Binding MedicationTypes}"
+                              SelectedItem="{Binding SelectedSubtype}"
+                              IsVisible="{Binding IsMedication}" />
+
+                    <ComboBox ItemsSource="{Binding DiagnosticTypes}"
+                              SelectedItem="{Binding SelectedSubtype}"
+                              IsVisible="{Binding IsDiagnostic}" />
+
+                    <ComboBox ItemsSource="{Binding PreventiveTypes}"
+                              SelectedItem="{Binding SelectedSubtype}"
+                              IsVisible="{Binding IsPreventive}" />
+
+                    <!-- Поля медикаментов -->
+                    <StackPanel IsVisible="{Binding IsMedication}">
+                        <TextBlock Text="Дозировка:"/>
+                        <TextBox Text="{Binding Dosage}" />
+
+                        <TextBlock Text="Длительность (дней):"/>
+                        <TextBox Text="{Binding DurationDays}" />
+
+                        <TextBlock Text="Количество инъекций:"/>
+                        <TextBox Text="{Binding InjectionCount}" />
+                    </StackPanel>
+
+                    <Button Content="Добавить" Command="{Binding AddOrderCommand}"/>
+
                 </StackPanel>
-            </ScrollViewer>
-        </Border>
+            </Border>
+
+        </StackPanel>
 
     </Grid>
+
 </Window>

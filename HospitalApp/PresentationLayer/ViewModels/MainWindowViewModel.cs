@@ -1,6 +1,5 @@
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HospitalApp.BusinessLayer;
@@ -11,53 +10,46 @@ namespace HospitalApp.PresentationLayer.ViewModels
     public partial class MainWindowViewModel : ObservableObject
     {
         private readonly AdmissionService _admissionService;
-        private string _firstName;
 
-        public string FirstName
-        {
-            get => _firstName;
-            set => SetProperty(ref _firstName, value);
-        }
+        public OrderViewModel OrderVm { get; }
 
-        private string _lastName;
+        // ====================== Поля пациента ======================
 
-        public string LastName
-        {
-            get => _lastName;
-            set => SetProperty(ref _lastName, value);
-        }
+        [ObservableProperty] private string firstName = string.Empty;
+        [ObservableProperty] private string lastName = string.Empty;
+        [ObservableProperty] private DateTimeOffset dateOfBirth = DateTimeOffset.Now;
+        [ObservableProperty] private string diagnosis = string.Empty;
 
-        private DateTimeOffset _dateOfBirth = DateTimeOffset.Now;
-
-        public DateTimeOffset DateOfBirth
-        {
-            get => _dateOfBirth;
-            set => SetProperty(ref _dateOfBirth, value);
-        }
-
-        private string _diagnosis;
-
-        public string Diagnosis
-        {
-            get => _diagnosis;
-            set => SetProperty(ref _diagnosis, value);
-        }
-
+        // ====================== ЭМК и госпитализация ======================
 
         public ObservableCollection<MedicalRecord> MedicalRecords { get; } = new();
-        public bool CanOpenEmk => SelectedRecord != null;
+
+        [ObservableProperty] 
+        private MedicalRecord? selectedRecord;
 
         partial void OnSelectedRecordChanged(MedicalRecord? value)
         {
+            // Обновляем видимость ЭМК
             OnPropertyChanged(nameof(CanOpenEmk));
+
+            // Передаём выбранную ЭМК во ViewModel назначений
+            OrderVm.TargetRecord = value;
         }
 
-        [ObservableProperty] private MedicalRecord? selectedRecord;
+        public bool CanOpenEmk => SelectedRecord != null;
+
+        // ====================== Сообщения ======================
 
         [ObservableProperty] private string? infoMessage;
 
+        // ====================== Конструктор ======================
+
         public MainWindowViewModel()
         {
+            // Создаем OrderVm
+            OrderVm = new OrderViewModel();
+
+            // Создаём отделения и врачей
             var cardio = new Department { Name = "Кардиология" };
             cardio.Doctors.Add(new Doctor { FullName = "Д-р Петров", Specialty = "Кардиолог" });
 
@@ -69,8 +61,14 @@ namespace HospitalApp.PresentationLayer.ViewModels
 
             var onDuty = new Doctor { FullName = "Д-р Иванова", Specialty = "Терапевт", IsOnDuty = true };
 
-            _admissionService = new AdmissionService(new() { cardio, surg, neuro }, onDuty);
+            // Сервис госпитализации
+            _admissionService = new AdmissionService(
+                new() { cardio, surg, neuro }, 
+                onDuty
+            );
         }
+
+        // ====================== Команды ======================
 
         [RelayCommand]
         private void AdmitPatient()
@@ -83,11 +81,21 @@ namespace HospitalApp.PresentationLayer.ViewModels
                 return;
             }
 
-            var record = _admissionService.AdmitPatient(FirstName, LastName, DateOfBirth, Diagnosis);
-            MedicalRecords.Add(record);
+            var record = _admissionService.AdmitPatient(
+                FirstName, LastName, DateOfBirth, Diagnosis
+            );
 
-            InfoMessage = $"✅ Пациент {record.Patient.LastName} госпитализирован в {record.Department?.Name}";
+            MedicalRecords.Add(record);
+            SelectedRecord = record;
+
+            InfoMessage = $"✅ Пациент {record.Patient.LastName} госпитализирован.";
         }
-        
+
+        [RelayCommand]
+        private void CompleteOrder(MedicalOrder order)
+        {
+            order.Status = OrderStatus.Completed;
+            InfoMessage = $"Назначение '{order.Description}' выполнено!";
+        }
     }
 }
