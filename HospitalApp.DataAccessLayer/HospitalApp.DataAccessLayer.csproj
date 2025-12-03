@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>DataAccessLayer</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="EaCloud.EntityFrameworkCore.Sqlite" Version="8.0.1.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
+      <PackageReference Include="SQLite" Version="3.13.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HospitalApp.BusinessLayer\HospitalApp.BusinessLayer.csproj" />
+    </ItemGroup>
+
+</Project>

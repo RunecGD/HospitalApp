@@ -1,0 +1,16 @@
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/bin/Debug/net9.0/HospitalApp.DataAccessLayer.deps.json
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/bin/Debug/net9.0/HospitalApp.DataAccessLayer.dll
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/bin/Debug/net9.0/HospitalApp.DataAccessLayer.pdb
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/bin/Debug/net9.0/HospitalApp.BusinessLayer.dll
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/bin/Debug/net9.0/HospitalApp.BusinessLayer.pdb
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/obj/Debug/net9.0/HospitalApp.DataAccessLayer.csproj.AssemblyReference.cache
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/obj/Debug/net9.0/HospitalApp.DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/obj/Debug/net9.0/HospitalApp.DataAccessLayer.AssemblyInfoInputs.cache
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/obj/Debug/net9.0/HospitalApp.DataAccessLayer.AssemblyInfo.cs
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/obj/Debug/net9.0/HospitalApp.DataAccessLayer.csproj.CoreCompileInputs.cache
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/obj/Debug/net9.0/HospitalApp.DataAccessLayer.sourcelink.json
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/obj/Debug/net9.0/Hospital.69C4B466.Up2Date
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/obj/Debug/net9.0/HospitalApp.DataAccessLayer.dll
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/obj/Debug/net9.0/refint/HospitalApp.DataAccessLayer.dll
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/obj/Debug/net9.0/HospitalApp.DataAccessLayer.pdb
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.DataAccessLayer/obj/Debug/net9.0/ref/HospitalApp.DataAccessLayer.dll

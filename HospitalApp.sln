@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalApp.PresentationLayer", "HospitalApp.PresentationLayer\HospitalApp.PresentationLayer.csproj", "{C057ECAD-4395-41C2-85FA-2B558BC5EE99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalApp.BusinessLayer", "HospitalApp.BusinessLayer\HospitalApp.BusinessLayer.csproj", "{709D94A8-C679-40C7-9DEE-EFFABC6A291A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalApp.DataAccessLayer", "HospitalApp.DataAccessLayer\HospitalApp.DataAccessLayer.csproj", "{F13120B4-C863-41B0-8B34-8A434D82B164}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitallApp.ServiceLayer", "HospitallApp.ServiceLayer\HospitallApp.ServiceLayer.csproj", "{881BCB4E-D3E3-431F-9674-F4381CC099C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C057ECAD-4395-41C2-85FA-2B558BC5EE99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C057ECAD-4395-41C2-85FA-2B558BC5EE99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C057ECAD-4395-41C2-85FA-2B558BC5EE99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C057ECAD-4395-41C2-85FA-2B558BC5EE99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{709D94A8-C679-40C7-9DEE-EFFABC6A291A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{709D94A8-C679-40C7-9DEE-EFFABC6A291A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{709D94A8-C679-40C7-9DEE-EFFABC6A291A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{709D94A8-C679-40C7-9DEE-EFFABC6A291A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F13120B4-C863-41B0-8B34-8A434D82B164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F13120B4-C863-41B0-8B34-8A434D82B164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F13120B4-C863-41B0-8B34-8A434D82B164}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F13120B4-C863-41B0-8B34-8A434D82B164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{881BCB4E-D3E3-431F-9674-F4381CC099C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{881BCB4E-D3E3-431F-9674-F4381CC099C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{881BCB4E-D3E3-431F-9674-F4381CC099C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{881BCB4E-D3E3-431F-9674-F4381CC099C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
