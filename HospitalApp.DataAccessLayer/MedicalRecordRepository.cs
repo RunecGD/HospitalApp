@@ -16,4 +16,10 @@ public class MedicalRecordRepository
         _context.SaveChanges();
         return medicalRecord;
     }
+
+    public void Remove(MedicalRecord medicalRecord)
+    {
+        _context.MedicalRecords.Remove(medicalRecord);
+        _context.SaveChanges();
+    }
 }

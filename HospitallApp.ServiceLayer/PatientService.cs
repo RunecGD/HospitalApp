@@ -36,4 +36,9 @@ public class PatientService
     {
         return _context.Patients.ToList();
     }
+
+    public void RemovePatient(Patient patient)
+    {
+        _patientRepository.Remove(patient);
+    }
 }

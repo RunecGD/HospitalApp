@@ -19,4 +19,12 @@ public class DepartmentService
     {
         return _context.Departments.ToList();
     }
+
+    public Department GetDepartmentByName(string name)
+    {
+        using (var context = new MyDbContext())
+        {
+            return context.Departments.SingleOrDefault(dp => dp.DepartmentName == name);
+        }
+    }
 }

@@ -16,4 +16,9 @@ public class PatientRepository
         _context.Patients.Add(patient);
         _context.SaveChanges();
     }
+    public void Remove(Patient patient)
+    {
+        _context.Patients.Remove(patient);
+        _context.SaveChanges();
+    }
 }

@@ -8,5 +8,7 @@ public class MedicalRecord
     public Patient Patient { get; set; }
     public string Department { get; set; }
     
+    public int DutyDoctorID { get; set; }
+    
 
 }

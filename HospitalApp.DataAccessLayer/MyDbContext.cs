@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 public class MyDbContext : DbContext
 {
+    public DbSet<Appointment> Appointments { get; set; }
+    public DbSet<Doctor> Doctors { get; set; }
     public DbSet<Patient> Patients { get; set; }
     public DbSet<MedicalRecord>  MedicalRecords { get; set; }
     public DbSet<Department> Departments { get; set; }
@@ -16,6 +18,12 @@ public class MyDbContext : DbContext
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Appointment>()
+            .HasDiscriminator<string>("AppointmentType")
+            .HasValue<TabletAppointment>("Tablet").
+            HasValue<PreventiveAppointment>("Preventive").
+            HasValue<DiagnosticAppointment>("Diagnostic").
+            HasValue<InjectionAppointment>("Injection");
         // Настройка первичных ключей
         modelBuilder.Entity<Patient>()
             .HasKey(p => p.PatientId);

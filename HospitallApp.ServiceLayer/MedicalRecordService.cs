@@ -16,5 +16,17 @@ public class MedicalRecordService
          
         return _medicalRecordRepository.Add(medicalRecord); 
     }
-    
+    public MedicalRecord GetMedicalRecordById(int medicalRecordId)
+    {
+        using (var context = new MyDbContext())
+        {
+            return context.MedicalRecords.SingleOrDefault(mr => mr.MedicalRecordId == medicalRecordId);
+        }
+    }
+
+    public void RemoveMedicalRecord(MedicalRecord  medicalRecord)
+    {
+        _medicalRecordRepository.Remove(medicalRecord);
+
+    }
 }
