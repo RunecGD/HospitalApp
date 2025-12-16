@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JKh2eMCcv2w=",
+  "dgSpecHash": "Jh1eVXkdn5s=",
   "success": true,
   "projectFilePath": "/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.PresentationLayer/HospitalApp.PresentationLayer.csproj",
   "expectedPackageFiles": [
@@ -114,6 +114,7 @@
     "/home/german/.nuget/packages/system.security.cryptography.xml/6.0.1/system.security.cryptography.xml.6.0.1.nupkg.sha512",
     "/home/german/.nuget/packages/system.text.encoding.codepages/8.0.0/system.text.encoding.codepages.8.0.0.nupkg.sha512",
     "/home/german/.nuget/packages/system.text.json/9.0.0/system.text.json.9.0.0.nupkg.sha512",
+    "/home/german/.nuget/packages/thingling.avalonia.controls.messagebox/2.0.0/thingling.avalonia.controls.messagebox.2.0.0.nupkg.sha512",
     "/home/german/.nuget/packages/tmds.dbus.protocol/0.21.2/tmds.dbus.protocol.0.21.2.nupkg.sha512",
     "/home/german/.nuget/packages/z.entityframework.extensions.efcore/8.103.1/z.entityframework.extensions.efcore.8.103.1.nupkg.sha512",
     "/home/german/.nuget/packages/z.entityframework.plus.efcore/8.103.1/z.entityframework.plus.efcore.8.103.1.nupkg.sha512",

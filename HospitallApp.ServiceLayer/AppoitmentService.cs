@@ -7,12 +7,10 @@ namespace HospitallApp.ServiceLayer;
 public class AppointmentService
 {
     private readonly AppointmentRepository _appointmentRepository;
-    private MyDbContext _context;
 
     public AppointmentService()
     {
         _appointmentRepository = new AppointmentRepository();
-        _context = new MyDbContext();
     }
 
     public void CreateAppointment(Appointment appointment)
@@ -22,9 +20,7 @@ public class AppointmentService
 
     public List<Appointment> GetAppointmentsByPatientId(int patientId)
     {
-        return _context.Appointments
-            .Where(ap => ap.PatientID == patientId)
-            .ToList(); // Получаем список назначений
+        return _appointmentRepository.GetByPatientId(patientId);
     }
 
     public void UpdateAppointment(Appointment selectedAppointment)

@@ -21,4 +21,10 @@ public class PatientRepository
         _context.Patients.Remove(patient);
         _context.SaveChanges();
     }
+
+    public List<Patient> GetAll()
+    {
+     return _context.Patients.ToList();   
+    }
+    
 }

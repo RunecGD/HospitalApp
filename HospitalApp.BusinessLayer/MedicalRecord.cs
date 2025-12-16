@@ -7,7 +7,8 @@ public class MedicalRecord
     public DateTimeOffset? DateOfCreate { get; set; }
     public Patient Patient { get; set; }
     public string Department { get; set; }
-    
+    public int DoctorID { get; set; }
+    public int NurseID { get; set; }
     public int DutyDoctorID { get; set; }
     
 

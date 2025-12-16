@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-16"?>
 <Epicrisis xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <FullName>ГерманРунец</FullName>
-  <Diagnosis>боль в сердце</Diagnosis>
-  <Doctor>Игорь Сидоров</Doctor>
+  <Diagnosis>ооочень большой хуй</Diagnosis>
+  <Doctor>Дмитрий Иванов</Doctor>
   <Appointments>
+    <Appointment xsi:type="PreventiveAppointment">
+      <AppointmentID>10</AppointmentID>
+      <PatientID>34</PatientID>
+      <Status>Completed</Status>
+      <AppointmentType>Preventive</AppointmentType>
+      <ProcedureName>Массаж хуя</ProcedureName>
+    </Appointment>
     <Appointment xsi:type="InjectionAppointment">
-      <AppointmentID>1</AppointmentID>
-      <PatientID>13</PatientID>
+      <AppointmentID>11</AppointmentID>
+      <PatientID>34</PatientID>
       <Status>Completed</Status>
       <AppointmentType>Injection</AppointmentType>
       <InjectionCount>0</InjectionCount>
-    </Appointment>
-    <Appointment xsi:type="DiagnosticAppointment">
-      <AppointmentID>2</AppointmentID>
-      <PatientID>13</PatientID>
-      <Status>Completed</Status>
-      <AppointmentType>Diagnostic</AppointmentType>
-      <TestName>массаж</TestName>
     </Appointment>
   </Appointments>
 </Epicrisis>

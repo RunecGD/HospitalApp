@@ -20,6 +20,7 @@ public class AppointmentRepository
         {
             Console.WriteLine("уже выполнено");
         }
+
         if (appointment.InjectionCount == 0)
             appointment.Status = "Completed";
         _context.Appointments.Update(appointment);
@@ -34,35 +35,45 @@ public class AppointmentRepository
         {
             Console.WriteLine("уже выполнено");
         }
+
         if (appointment.DurationDays == 0)
             appointment.Status = "Completed";
-        _context.Appointments.Update(appointment); 
-        _context.SaveChanges(); 
+        _context.Appointments.Update(appointment);
+        _context.SaveChanges();
     }
 
     public void Update(DiagnosticAppointment appointment)
     {
         if (appointment.Status != "Completed")
-            appointment.Status = "Completed"; 
+            appointment.Status = "Completed";
 
         else
         {
             Console.WriteLine("уже выполнено");
         }
-        _context.Appointments.Update(appointment); 
+
+        _context.Appointments.Update(appointment);
         _context.SaveChanges();
     }
 
     public void Update(PreventiveAppointment appointment)
     {
         if (appointment.Status != "Completed")
-            appointment.Status = "Completed"; 
+            appointment.Status = "Completed";
 
         else
         {
             Console.WriteLine("уже выполнено");
         }
-        _context.Appointments.Update(appointment); 
-        _context.SaveChanges(); 
+
+        _context.Appointments.Update(appointment);
+        _context.SaveChanges();
+    }
+
+    public List<Appointment> GetByPatientId(int patientId)
+    {
+        return _context.Appointments
+            .Where(ap => ap.PatientID == patientId)
+            .ToList(); // Получаем список назначений
     }
 }

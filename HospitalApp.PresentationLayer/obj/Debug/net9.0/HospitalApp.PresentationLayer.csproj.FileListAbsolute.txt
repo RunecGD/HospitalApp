@@ -185,3 +185,4 @@
 /home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.PresentationLayer/bin/Debug/net9.0/HospitallApp.ServiceLayer.dll
 /home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.PresentationLayer/bin/Debug/net9.0/HospitallApp.ServiceLayer.pdb
 /home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.PresentationLayer/bin/Debug/net9.0/HospitalApp.DataAccessLayer.pdb
+/home/german/IdeaProjects/projectC#/HospitalApp/HospitalApp.PresentationLayer/bin/Debug/net9.0/ThingLing.Controls.MessageBox.dll

@@ -214,6 +214,10 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.2.1, )"
+            },
+            "ThingLing.Avalonia.Controls.MessageBox": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             }
           },
           "imports": [

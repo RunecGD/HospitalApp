@@ -2107,6 +2107,18 @@
           "buildTransitive/net8.0/System.Text.Json.targets": {}
         }
       },
+      "ThingLing.Avalonia.Controls.MessageBox/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia.Desktop": "0.10.10"
+        },
+        "compile": {
+          "lib/net6.0/ThingLing.Controls.MessageBox.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/ThingLing.Controls.MessageBox.dll": {}
+        }
+      },
       "Tmds.DBus.Protocol/0.21.2": {
         "type": "package",
         "dependencies": {
@@ -5525,6 +5537,20 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "ThingLing.Avalonia.Controls.MessageBox/2.0.0": {
+      "sha512": "3vIv+GzZK9Zex4QazJ+jKOPW9Wy6on27yMOOTusA7bUOJmKQb4AVReH/3BryY6S/0ljyBxzzi79myNrukPMq1w==",
+      "type": "package",
+      "path": "thingling.avalonia.controls.messagebox/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "README.md",
+        "lib/net6.0/ThingLing.Controls.MessageBox.dll",
+        "thingling.avalonia.controls.messagebox.2.0.0.nupkg.sha512",
+        "thingling.avalonia.controls.messagebox.nuspec"
+      ]
+    },
     "Tmds.DBus.Protocol/0.21.2": {
       "sha512": "ScSMrUrrw8px4kK1Glh0fZv/HQUlg1078bNXNPfRPKQ3WbRzV9HpsydYEOgSoMK5LWICMf2bMwIFH0pGjxjcMA==",
       "type": "package",
@@ -5714,7 +5740,8 @@
       "Avalonia.Fonts.Inter >= 11.3.6",
       "Avalonia.Themes.Fluent >= 11.3.6",
       "CommunityToolkit.Mvvm >= 8.2.1",
-      "HospitallApp.ServiceLayer >= 1.0.0"
+      "HospitallApp.ServiceLayer >= 1.0.0",
+      "ThingLing.Avalonia.Controls.MessageBox >= 2.0.0"
     ]
   },
   "packageFolders": {
@@ -5788,6 +5815,10 @@
           "CommunityToolkit.Mvvm": {
             "target": "Package",
             "version": "[8.2.1, )"
+          },
+          "ThingLing.Avalonia.Controls.MessageBox": {
+            "target": "Package",
+            "version": "[2.0.0, )"
           }
         },
         "imports": [

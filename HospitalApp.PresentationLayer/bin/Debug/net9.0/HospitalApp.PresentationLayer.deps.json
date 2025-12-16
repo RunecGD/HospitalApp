@@ -14,7 +14,8 @@
           "Avalonia.Fonts.Inter": "11.3.6",
           "Avalonia.Themes.Fluent": "11.3.6",
           "CommunityToolkit.Mvvm": "8.2.1",
-          "HospitallApp.ServiceLayer": "1.0.0"
+          "HospitallApp.ServiceLayer": "1.0.0",
+          "ThingLing.Avalonia.Controls.MessageBox": "2.0.0"
         },
         "runtime": {
           "HospitalApp.PresentationLayer.dll": {}
@@ -1416,6 +1417,17 @@
       },
       "System.Text.Encoding.CodePages/8.0.0": {},
       "System.Text.Json/9.0.0": {},
+      "ThingLing.Avalonia.Controls.MessageBox/2.0.0": {
+        "dependencies": {
+          "Avalonia.Desktop": "11.3.6"
+        },
+        "runtime": {
+          "lib/net6.0/ThingLing.Controls.MessageBox.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
       "Tmds.DBus.Protocol/0.21.2": {
         "dependencies": {
           "System.IO.Pipelines": "8.0.0"
@@ -2295,6 +2307,13 @@
       "sha512": "sha512-js7+qAu/9mQvnhA4EfGMZNEzXtJCDxgkgj8ohuxq/Qxv+R56G+ljefhiJHOxTNiw54q8vmABCWUwkMulNdlZ4A==",
       "path": "system.text.json/9.0.0",
       "hashPath": "system.text.json.9.0.0.nupkg.sha512"
+    },
+    "ThingLing.Avalonia.Controls.MessageBox/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3vIv+GzZK9Zex4QazJ+jKOPW9Wy6on27yMOOTusA7bUOJmKQb4AVReH/3BryY6S/0ljyBxzzi79myNrukPMq1w==",
+      "path": "thingling.avalonia.controls.messagebox/2.0.0",
+      "hashPath": "thingling.avalonia.controls.messagebox.2.0.0.nupkg.sha512"
     },
     "Tmds.DBus.Protocol/0.21.2": {
       "type": "package",

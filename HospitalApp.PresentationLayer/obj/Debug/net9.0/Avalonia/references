@@ -261,6 +261,7 @@
 /usr/lib64/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.8/ref/net9.0/System.Xml.XmlSerializer.dll
 /usr/lib64/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.8/ref/net9.0/System.Xml.XPath.dll
 /usr/lib64/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.8/ref/net9.0/System.Xml.XPath.XDocument.dll
+/home/german/.nuget/packages/thingling.avalonia.controls.messagebox/2.0.0/lib/net6.0/ThingLing.Controls.MessageBox.dll
 /home/german/.nuget/packages/tmds.dbus.protocol/0.21.2/lib/net8.0/Tmds.DBus.Protocol.dll
 /usr/lib64/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.8/ref/net9.0/WindowsBase.dll
 /home/german/.nuget/packages/z.entityframework.extensions.efcore/8.103.1/lib/net8.0/Z.EntityFramework.Extensions.EFCore.dll

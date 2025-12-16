@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HospitalApp.DataAccessLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d19d727b838f2d897a3e5ce2815be0ad329695ad")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6d79f5351b7d3b5138caa6725c03aa13a49ecbe")]
 [assembly: System.Reflection.AssemblyProductAttribute("HospitalApp.DataAccessLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HospitalApp.DataAccessLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
